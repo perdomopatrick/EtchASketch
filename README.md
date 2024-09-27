@@ -11,3 +11,11 @@ The **digital** version is like the physical toy but better, because it has **ex
 ## Who will use it and Why is this project of interest to you?
 
 The project is for anyone, especially for those who want be creative and draw in an unconventional and fun way. My motivation for creating this project is to make the toy more accessible and to add much needed features.
+
+### User Stories
+
+- As a user, I want to be able to keep an arbitrary number of canvases in my collection
+- As a user, I want to be able to view all my collection of canvases
+- As a user, I want to be able to draw on my canvas
+- As a user, I want to be able to see my canvas as I draw
+- As a user, I want to be able to reset my canvas
