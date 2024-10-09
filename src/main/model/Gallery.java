@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Gallery {
 
     // EFFECTS: creates empty collection, set current canvas index to 0
@@ -17,7 +19,7 @@ public class Gallery {
 
     // REQUIRES: width > 0 && height > 0
     // MODIFIES: this
-    // EFFECTS: creates new canvas, adds it to the collection and 
+    // EFFECTS: creates new canvas, adds it to the collection and
     //          sets current canvas index to the index of the new canvas
     public void newCanvas(int width, int height) {
         // stub
@@ -57,5 +59,10 @@ public class Gallery {
     public int getCurrCanvasIndex() {
         // stub
         return 0;
+    }
+
+    public ArrayList<Canvas> getCollection() {
+        // stub
+        return null;
     }
 }
