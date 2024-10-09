@@ -68,10 +68,16 @@ public class DrawMenu extends Menu {
     // EFFECTS: trys to draw on the canvas for given move
     public void play(String direction, int length) {
         Canvas canvas = gallery.getCurrCanvas();
-        try {
-            canvas.draw(direction.toLowerCase(), length);
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println("Invalid input! Input must be an Inbounds");
+
+        if (direction.equalsIgnoreCase("up") || direction.equalsIgnoreCase("down")
+                || direction.equalsIgnoreCase("left") || direction.equalsIgnoreCase("right")) {
+            try {
+                canvas.draw(direction.toLowerCase(), length);
+            } catch (IndexOutOfBoundsException e) {
+                System.out.println("Invalid input! Input must be an Inbounds");
+            }
+        } else {
+            System.out.println("Invalid input! direction must be (up, down, left, or right)");
         }
     }
 
