@@ -27,7 +27,7 @@ public class DrawMenu extends Menu {
     // EFFECTS: displays the draw menu options to the user
     public void prompt() {
         System.out.println("\n=== Draw Menu ===");
-        System.out.println("- Direction and Length");
+        System.out.println("- Direction (str) and Length (int)");
         System.out.println("- Shake (shake, s)");
         System.out.println("- Quit (quit, q)");
         System.out.print("Choose an option: ");
@@ -68,13 +68,14 @@ public class DrawMenu extends Menu {
     // EFFECTS: trys to draw on the canvas for given move
     public void play(String direction, int length) {
         Canvas canvas = gallery.getCurrCanvas();
-
-        if (direction.equalsIgnoreCase("up") || direction.equalsIgnoreCase("down")
+        boolean successfulMove = false;
+        if (length <= 0) {
+            System.out.println("Invalid length");
+        } else if (direction.equalsIgnoreCase("up") || direction.equalsIgnoreCase("down")
                 || direction.equalsIgnoreCase("left") || direction.equalsIgnoreCase("right")) {
-            try {
-                canvas.draw(direction.toLowerCase(), length);
-            } catch (IndexOutOfBoundsException e) {
-                System.out.println("Invalid input! Input must be an Inbounds");
+            successfulMove = canvas.draw(direction.toLowerCase(), length);
+            if (!successfulMove) {
+                System.out.println("Stlyus hit the border!");
             }
         } else {
             System.out.println("Invalid input! direction must be (up, down, left, or right)");
