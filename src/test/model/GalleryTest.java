@@ -17,7 +17,7 @@ public class GalleryTest {
     @Test
     void testConstructor() {
         assertEquals(0, testGallery.getCurrCanvasIndex());
-        assertEquals(0, testGallery.getCollection().size());
+        assertThrows(IndexOutOfBoundsException.class, () -> testGallery.getCurrCanvas());
     }
 
     @Test
@@ -66,10 +66,19 @@ public class GalleryTest {
     }
 
     @Test
-    public void testPrevCanvas() {
+    public void testNextCanvasMultiple() {
+        testGallery.nextCanvas();
+        testGallery.nextCanvas();
+
+        assertEquals(2, testGallery.getCurrCanvasIndex());
+    }
+
+    @Test
+    public void testPrevCanvasMultiple() {
+        testGallery.prevCanvas();
         testGallery.prevCanvas();
 
-        assertEquals(-1, testGallery.getCurrCanvasIndex());
+        assertEquals(-2, testGallery.getCurrCanvasIndex());
     }
 
     @Test
@@ -80,9 +89,18 @@ public class GalleryTest {
     }
 
     @Test
-    public void testResetCurrCanvasNotAtZero() {
+    public void testResetCurrCanvasPositive() {
         testGallery.nextCanvas();
         testGallery.nextCanvas();
+        testGallery.resetCurrCanvas();
+
+        assertEquals(0, testGallery.getCurrCanvasIndex());
+    }
+
+    @Test
+    public void testResetCurrCanvasNegative() {
+        testGallery.prevCanvas();
+        testGallery.prevCanvas();
         testGallery.resetCurrCanvas();
 
         assertEquals(0, testGallery.getCurrCanvasIndex());

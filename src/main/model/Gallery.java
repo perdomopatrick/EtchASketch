@@ -66,8 +66,4 @@ public class Gallery {
     public int getCurrCanvasIndex() {
         return currCanvasIndex;
     }
-
-    public ArrayList<Canvas> getCollection() {
-        return collection;
-    }
 }
