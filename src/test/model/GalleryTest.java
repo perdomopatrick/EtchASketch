@@ -21,20 +21,19 @@ public class GalleryTest {
     }
 
     @Test
-    public void testSingletonInstance() {
+    void testSingletonInstance() {
         Gallery firstInstance = Gallery.getInstance();
         Gallery secondInstance = Gallery.getInstance();
-        
+
         assertSame(firstInstance, secondInstance);
-        
+
         assertNotNull(firstInstance);
         assertNotNull(secondInstance);
     }
 
     @Test
-    public void testNewCanvas() {
+    void testNewCanvas() {
         testGallery.newCanvas(3, 2);
-
 
         assertEquals(0, testGallery.getCurrCanvasIndex());
         assertNotNull(testGallery.getCurrCanvas());
@@ -43,12 +42,12 @@ public class GalleryTest {
     }
 
     @Test
-    public void testNewCanvasMultiple() {
+    void testNewCanvasMultiple() {
         testGallery.newCanvas(2, 3);
-        testGallery.newCanvas(3,2);
+        testGallery.newCanvas(3, 2);
 
         assertEquals(1, testGallery.getCurrCanvasIndex());
-        
+
         assertNotNull(testGallery.getCanvas(0));
         assertEquals(2, testGallery.getCanvas(0).getWidth());
         assertEquals(3, testGallery.getCanvas(0).getHeight());
@@ -59,14 +58,17 @@ public class GalleryTest {
     }
 
     @Test
-    public void testNextCanvas() {
+    void testNextCanvas() {
+        testGallery.newCanvas(2, 3);
         testGallery.nextCanvas();
 
         assertEquals(1, testGallery.getCurrCanvasIndex());
     }
 
     @Test
-    public void testNextCanvasMultiple() {
+    void testNextCanvasMultiple() {
+        testGallery.newCanvas(2, 3);
+        testGallery.newCanvas(2, 3);
         testGallery.nextCanvas();
         testGallery.nextCanvas();
 
@@ -74,23 +76,48 @@ public class GalleryTest {
     }
 
     @Test
-    public void testPrevCanvasMultiple() {
-        testGallery.prevCanvas();
-        testGallery.prevCanvas();
+    void testNextCanvasPassedSize() {
+        testGallery.nextCanvas();
 
-        assertEquals(-2, testGallery.getCurrCanvasIndex());
+        assertEquals(0, testGallery.getCurrCanvasIndex());
     }
 
     @Test
-    public void testResetCurrCanvas() {
+    void testPrevCanvas() {
+        testGallery.prevCanvas();
+
+        assertEquals(-1, testGallery.getCurrCanvasIndex());
+    }
+
+    @Test
+    void testPrevCanvasMultiple() {
+        testGallery.newCanvas(2, 3);
+        testGallery.newCanvas(2, 3);
+        testGallery.nextCanvas();
+        testGallery.nextCanvas();
+
+        testGallery.prevCanvas();
+
+        assertEquals(1, testGallery.getCurrCanvasIndex());
+    }
+
+    @Test
+    void testPrevCanvasPassedZero() {
+        testGallery.prevCanvas();
+        testGallery.prevCanvas();
+
+        assertEquals(-1, testGallery.getCurrCanvasIndex());
+    }
+
+    @Test
+    void testResetCurrCanvas() {
         testGallery.resetCurrCanvas();
 
         assertEquals(0, testGallery.getCurrCanvasIndex());
     }
 
     @Test
-    public void testResetCurrCanvasPositive() {
-        testGallery.nextCanvas();
+    void testResetCurrCanvasPositive() {
         testGallery.nextCanvas();
         testGallery.resetCurrCanvas();
 
@@ -98,8 +125,7 @@ public class GalleryTest {
     }
 
     @Test
-    public void testResetCurrCanvasNegative() {
-        testGallery.prevCanvas();
+    void testResetCurrCanvasNegative() {
         testGallery.prevCanvas();
         testGallery.resetCurrCanvas();
 
