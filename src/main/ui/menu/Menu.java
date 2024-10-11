@@ -17,10 +17,15 @@ public abstract class Menu {
         this.gallery = Gallery.getInstance();
     }
 
+    // EFFECTS: abstract method, calls prompt to be displayed and
+    // gets the user's valid input then sends input to be evaluated
     protected abstract void menu();
 
+    // EFFECTS: abstract method, displays user's options 
     protected abstract void prompt();
-    
+
+    // EFFECTS: abstract method, evaluates user's input command and performs the
+    // corresponding action
     protected abstract void evaluateStrInput(String command);
 
     // EFFECTS: prompts the user, validates it against allowed values,

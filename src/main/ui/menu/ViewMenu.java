@@ -14,6 +14,7 @@ public class ViewMenu extends Menu {
     // EFFECTS: View menu, gets the user's valid input then sends input to be
     // evaluated, loops until quit is true (option: next, prev, draw, quit)
     // The current canvas is reset at the start
+    @Override
     public void menu() {
         String choice;
         gallery.resetCurrCanvas();
@@ -25,6 +26,7 @@ public class ViewMenu extends Menu {
     }
 
     // EFFECTS: Displays the view menu options to the user
+    @Override
     public void prompt() {
         System.out.println("\n=== View Menu ===");
         System.out.println("Next cavnas (next, n)");
@@ -46,6 +48,7 @@ public class ViewMenu extends Menu {
      * flag to true
      * ignores case sensitivity for the command
      */
+    @Override
     protected void evaluateStrInput(String command) {
         if (command.equalsIgnoreCase("next") || command.equalsIgnoreCase("n")) {
             next();
@@ -58,10 +61,10 @@ public class ViewMenu extends Menu {
                 System.out.println("No canvas to draw on");
             }
         } else if (command.equalsIgnoreCase("quit") || command.equalsIgnoreCase("q")) {
-            System.out.println("Exiting...");
+            System.out.println("Exiting the View Menu...");
             quit = true;
         } else {
-            System.out.println("Invalid choice. Please try again.");
+            System.out.println("Invalid input! Please try again");
         }
     }
 
@@ -70,7 +73,7 @@ public class ViewMenu extends Menu {
         try {
             displayCanvas(gallery.getCurrCanvas().getBoard());
         } catch (IndexOutOfBoundsException e) {
-            System.out.println("Invalid input! No canvas");
+            System.out.println("Invalid input! No canvas here!");
         }
     }
 

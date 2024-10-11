@@ -17,6 +17,7 @@ public class MainMenu extends Menu {
     // EFFECTS: Main menu, gets the user's valid input then sends input to be
     // evaluated
     // loops until quit is true (option: new, view, quit)
+    @Override
     public void menu() {
         String choice;
         do {
@@ -26,6 +27,7 @@ public class MainMenu extends Menu {
     }
 
     // EFFECTS: displays the main menu options to the user
+    @Override
     public void prompt() {
         System.out.println("=== Main Menu ===");
         System.out.println("- New cavnas (new, n)");
@@ -42,13 +44,14 @@ public class MainMenu extends Menu {
     // If the command is "quit" or "q", it exits the game and sets the quit flag to
     // true
     // ignores case sensitivity for the command
+    @Override
     protected void evaluateStrInput(String command) {
         if (command.equalsIgnoreCase("new") || command.equalsIgnoreCase("n")) {
             newCanvasMenu.menu();
         } else if (command.equalsIgnoreCase("view") || command.equalsIgnoreCase("v")) {
             viewMenu.menu();
         } else if (command.equalsIgnoreCase("quit") || command.equalsIgnoreCase("q")) {
-            System.out.println("Exiting...");
+            System.out.println("Exiting the game...");
             quit = true;
         }
     }

@@ -33,9 +33,10 @@ public class NewCanvasMenu extends Menu {
     }
 
     // EFFECTS: displays the new canvas menu options to the user
+    @Override
     public void prompt() {
         System.out.println("\n=== New Canvas ===");
-        System.out.println("Please specify the dimensions of the canvas");
+        System.out.println("Please specify the dimensions of your canvas");
         System.out.print("Enter Height and Width (e.g., '10 20'): ");
     }
 
@@ -46,6 +47,7 @@ public class NewCanvasMenu extends Menu {
      * If valid, sets the height and width values and marks the input process as
      * complet, quit = true else == false
      */
+    @Override
     protected void evaluateStrInput(String command) {
         if (command.matches("[1-9][0-9]* [1-9][0-9]*")) {
             String[] parts = command.split(" ");
@@ -53,7 +55,7 @@ public class NewCanvasMenu extends Menu {
             width = Integer.parseInt(parts[1]);
             quit = true;
         } else {
-            System.out.println("Invalid input. Please enter two positive integers separated by a space.");
+            System.out.println("Invalid input. Please enter two positive integers separated by a space");
             quit = false;
         }
     }

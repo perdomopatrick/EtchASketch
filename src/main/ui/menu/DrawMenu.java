@@ -13,6 +13,7 @@ public class DrawMenu extends Menu {
     // EFFECTS: Draw menu, gets the user's valid input then sends input to be
     // evaluated, loops until quit is true (option: String int, shake, quit)
     // quit flag to false
+    @Override
     public void menu() {
         String command;
         quit = false;
@@ -25,9 +26,10 @@ public class DrawMenu extends Menu {
     }
 
     // EFFECTS: displays the draw menu options to the user
+    @Override
     public void prompt() {
         System.out.println("\n=== Draw Menu ===");
-        System.out.println("- Direction (str) and Length (int)");
+        System.out.println("- Direction and Length");
         System.out.println("- Shake (shake, s)");
         System.out.println("- Quit (quit, q)");
         System.out.print("Choose an option: ");
@@ -43,11 +45,12 @@ public class DrawMenu extends Menu {
      * flag to true
      * ignores case sensitivity for the command
      */
+    @Override
     protected void evaluateStrInput(String command) {
         int inputInt;
         String inputStr;
         if (command.equalsIgnoreCase("quit") || command.equalsIgnoreCase("q")) {
-            System.out.println("Exiting the program.");
+            System.out.println("Exiting the Draw Menu");
             quit = true;
         } else if (command.equalsIgnoreCase("shake") || command.equalsIgnoreCase("s")) {
             shake();
@@ -58,9 +61,9 @@ public class DrawMenu extends Menu {
                 inputInt = Integer.parseInt(parts[1]);
                 play(inputStr, inputInt);
             } catch (NumberFormatException e) {
-                System.out.println("Invalid input! The first input must be an String.");
+                System.out.println("Invalid input! The first input must be a String");
             } catch (IndexOutOfBoundsException e) {
-                System.out.println("Invalid input! Input must be an String and Int to draw");
+                System.out.println("Invalid input! Input must be an String and integer separated by a space");
             }
         }
     }
@@ -69,8 +72,8 @@ public class DrawMenu extends Menu {
     public void play(String direction, int length) {
         Canvas canvas = gallery.getCurrCanvas();
         boolean successfulMove = false;
-        if (length <= 0) {
-            System.out.println("Invalid length");
+        if (length < 0) {
+            System.out.println("Invalid length! Input length must be non-zero");
         } else if (direction.equalsIgnoreCase("up") || direction.equalsIgnoreCase("down")
                 || direction.equalsIgnoreCase("left") || direction.equalsIgnoreCase("right")) {
             successfulMove = canvas.draw(direction.toLowerCase(), length);
@@ -78,7 +81,7 @@ public class DrawMenu extends Menu {
                 System.out.println("Stlyus hit the border!");
             }
         } else {
-            System.out.println("Invalid input! direction must be (up, down, left, or right)");
+            System.out.println("Invalid input! Input direction must be (up, down, left, or right)");
         }
     }
 
