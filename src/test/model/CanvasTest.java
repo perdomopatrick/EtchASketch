@@ -8,15 +8,17 @@ import static org.junit.jupiter.api.Assertions.*;
 public class CanvasTest {
 
     private Canvas testCanvas;
+    private boolean[][] expectedArray;
 
     @BeforeEach
     void runBefore() {
         testCanvas = new Canvas(3, 2);
+        expectedArray = new boolean[2][3];
     }
 
     @Test
     void testConstructor() {
-        assertArrayEquals(new boolean[2][3], testCanvas.getBoard());
+        assertArrayEquals(expectedArray, testCanvas.getBoard());
         assertEquals(3, testCanvas.getWidth());
         assertEquals(2, testCanvas.getHeight());
         assertEquals(0, testCanvas.getStylusXCoord());
@@ -25,9 +27,9 @@ public class CanvasTest {
 
     @Test
     void testDrawRight() {
-        testCanvas.draw("right", 2);
+        assertTrue(testCanvas.draw("right", 2));
 
-        boolean[][] expectedArray = {
+        expectedArray = new boolean[][] {
                 { false, true, true },
                 { false, false, false }
         };
@@ -40,9 +42,9 @@ public class CanvasTest {
     @Test
     void testDrawLeft() {
         testCanvas.setStylusXCoord(2);
-        testCanvas.draw("left", 2);
+        assertTrue(testCanvas.draw("left", 2));
 
-        boolean[][] expectedArray = {
+        expectedArray = new boolean[][] {
                 { true, true, false },
                 { false, false, false }
         };
@@ -55,9 +57,9 @@ public class CanvasTest {
     @Test
     void testDrawUp() {
         testCanvas.setStylusYCoord(1);
-        testCanvas.draw("up", 1);
+        assertTrue(testCanvas.draw("up", 1));
 
-        boolean[][] expectedArray = {
+        expectedArray = new boolean[][] {
                 { true, false, false },
                 { false, false, false }
         };
@@ -69,9 +71,9 @@ public class CanvasTest {
 
     @Test
     void testDrawDown() {
-        testCanvas.draw("down", 1);
+        assertTrue(testCanvas.draw("down", 1));
 
-        boolean[][] expectedArray = {
+        expectedArray = new boolean[][] {
                 { false, false, false },
                 { true, false, false }
         };
@@ -82,10 +84,123 @@ public class CanvasTest {
     }
 
     @Test
+    void testDrawRightZero() {
+        assertTrue(testCanvas.draw("right", 0));
+
+        assertArrayEquals(expectedArray, testCanvas.getBoard());
+        assertEquals(0, testCanvas.getStylusXCoord());
+        assertEquals(0, testCanvas.getStylusYCoord());
+    }
+
+    @Test
+    void testDrawLeftZero() {
+        assertTrue(testCanvas.draw("left", 0));
+
+        assertArrayEquals(expectedArray, testCanvas.getBoard());
+        assertEquals(0, testCanvas.getStylusXCoord());
+        assertEquals(0, testCanvas.getStylusYCoord());
+    }
+
+    @Test
+    void testDrawUpZero() {
+        assertTrue(testCanvas.draw("up", 0));
+
+        assertArrayEquals(expectedArray, testCanvas.getBoard());
+        assertEquals(0, testCanvas.getStylusXCoord());
+        assertEquals(0, testCanvas.getStylusYCoord());
+    }
+
+    @Test
+    void testDrawDownZero() {
+        assertTrue(testCanvas.draw("down", 0));
+
+        assertArrayEquals(expectedArray, testCanvas.getBoard());
+        assertEquals(0, testCanvas.getStylusXCoord());
+        assertEquals(0, testCanvas.getStylusYCoord());
+    }
+
+    @Test
+    void testDrawRightOutOfBounds() {
+        assertFalse(testCanvas.draw("right", 3));
+
+        expectedArray = new boolean[][] {
+            { false, true, true },
+            { false, false, false }
+        };
+
+        assertArrayEquals(expectedArray, testCanvas.getBoard());
+        assertEquals(2, testCanvas.getStylusXCoord());
+        assertEquals(0, testCanvas.getStylusYCoord());
+    }
+
+    @Test
+    void testDrawLeftOutOfBounds() {
+        assertFalse(testCanvas.draw("left", 3));
+
+        assertArrayEquals(expectedArray, testCanvas.getBoard());
+        assertEquals(0, testCanvas.getStylusXCoord());
+        assertEquals(0, testCanvas.getStylusYCoord());
+    }
+
+    @Test
+    void testDrawUpOutOfBounds() {
+        assertFalse(testCanvas.draw("up", 3));
+
+        assertArrayEquals(expectedArray, testCanvas.getBoard());
+        assertEquals(0, testCanvas.getStylusXCoord());
+        assertEquals(0, testCanvas.getStylusYCoord());
+    }
+
+    @Test
+    void testDrawDownOutOfBounds() {    
+        assertFalse(testCanvas.draw("down", 2));
+    
+        expectedArray = new boolean[][] {
+            { false, false, false },
+            { true, false, false }
+        };
+
+        assertArrayEquals(expectedArray, testCanvas.getBoard());
+        assertEquals(0, testCanvas.getStylusXCoord());
+        assertEquals(1, testCanvas.getStylusYCoord());
+    }
+    @Test
+    void testDrawMultiple() {
+        assertTrue(testCanvas.draw("right", 2));
+        assertTrue(testCanvas.draw("down", 1));
+        assertFalse(testCanvas.draw("left", 3));
+        assertTrue(testCanvas.draw("up", 1));
+
+        expectedArray = new boolean[][] {
+                { true, true, true },
+                { true, true, true }
+        };
+
+        assertArrayEquals(expectedArray, testCanvas.getBoard());
+        assertEquals(0, testCanvas.getStylusXCoord());
+        assertEquals(0, testCanvas.getStylusYCoord());
+    }
+
+    @Test
+    void testDrawOnColoured() {
+        assertTrue(testCanvas.draw("right", 2));
+        assertTrue(testCanvas.draw("left", 1));
+
+        expectedArray = new boolean[][] {
+                { false, true, true },
+                { false, false, false }
+        };
+
+        assertArrayEquals(expectedArray, testCanvas.getBoard());
+        assertEquals(1, testCanvas.getStylusXCoord());
+        assertEquals(0, testCanvas.getStylusYCoord());
+    }
+
+    @Test
     void testShake() {
         testCanvas.shake();
 
-        assertArrayEquals(new boolean[2][3], testCanvas.getBoard());
+        assertArrayEquals(expectedArray, testCanvas.getBoard());
         assertEquals(0, testCanvas.getStylusXCoord());
         assertEquals(0, testCanvas.getStylusYCoord());
     }
@@ -97,7 +212,20 @@ public class CanvasTest {
 
         testCanvas.shake();
 
-        assertArrayEquals(new boolean[2][3], testCanvas.getBoard());
+        assertArrayEquals(expectedArray, testCanvas.getBoard());
+        assertEquals(2, testCanvas.getStylusXCoord());
+        assertEquals(1, testCanvas.getStylusYCoord());
+    }
+
+    @Test
+    void testShakeColouredBoardMultiple() {
+        testCanvas.draw("right", 2);
+        testCanvas.draw("down", 1);
+
+        testCanvas.shake();
+        testCanvas.shake();
+
+        assertArrayEquals(expectedArray, testCanvas.getBoard());
         assertEquals(2, testCanvas.getStylusXCoord());
         assertEquals(1, testCanvas.getStylusYCoord());
     }
