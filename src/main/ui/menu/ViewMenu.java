@@ -1,5 +1,6 @@
 package ui.menu;
 
+// View Menu
 public class ViewMenu extends Menu {
     private final DrawMenu drawMenu;
 
@@ -35,7 +36,7 @@ public class ViewMenu extends Menu {
 
     /*
      * MODIFIES: this
-     * EFFECTS: Evaluates the user's input command and performs the corresponding
+     * EFFECTS: evaluates the user's input command and performs the corresponding
      * action
      * If the command is "next" or "n", it navigates to the next canvas
      * If the command is "prev" or "p", it navigates to the previous canvas
@@ -43,7 +44,7 @@ public class ViewMenu extends Menu {
      * on the current canvas
      * If the command is "quit" or "q", it exits the view menu and sets the quit
      * flag to true
-     * Ignores case sensitivity for the command
+     * ignores case sensitivity for the command
      */
     protected void evaluateStrInput(String command) {
         if (command.equalsIgnoreCase("next") || command.equalsIgnoreCase("n")) {
@@ -64,7 +65,7 @@ public class ViewMenu extends Menu {
         }
     }
 
-    // EFFECTS: Displays the current canvas's board, if it exists
+    // EFFECTS: displays the current canvas's board, if it exists
     private void viewCanvas() {
         try {
             displayCanvas(gallery.getCurrCanvas().getBoard());
@@ -73,12 +74,12 @@ public class ViewMenu extends Menu {
         }
     }
 
-    // EFFECTS: Advances to the next canvas in the gallery
+    // EFFECTS: advances to the next canvas in the gallery
     private void next() {
         gallery.nextCanvas();
     }
 
-    // EFFECTS: Advances to the previous canvas in the gallery
+    // EFFECTS: advances to the previous canvas in the gallery
     private void prev() {
         gallery.prevCanvas();
     }

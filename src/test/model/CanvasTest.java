@@ -124,8 +124,8 @@ public class CanvasTest {
         assertFalse(testCanvas.draw("right", 3));
 
         expectedArray = new boolean[][] {
-            { false, true, true },
-            { false, false, false }
+                { false, true, true },
+                { false, false, false }
         };
 
         assertArrayEquals(expectedArray, testCanvas.getBoard());
@@ -152,18 +152,19 @@ public class CanvasTest {
     }
 
     @Test
-    void testDrawDownOutOfBounds() {    
+    void testDrawDownOutOfBounds() {
         assertFalse(testCanvas.draw("down", 2));
-    
+
         expectedArray = new boolean[][] {
-            { false, false, false },
-            { true, false, false }
+                { false, false, false },
+                { true, false, false }
         };
 
         assertArrayEquals(expectedArray, testCanvas.getBoard());
         assertEquals(0, testCanvas.getStylusXCoord());
         assertEquals(1, testCanvas.getStylusYCoord());
     }
+
     @Test
     void testDrawMultiple() {
         assertTrue(testCanvas.draw("right", 2));
