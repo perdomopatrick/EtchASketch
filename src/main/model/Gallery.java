@@ -38,14 +38,18 @@ public class Gallery {
     // EFFECTS: adds 1 to the current canvas index
     // if it does not exceed the size of the collection
     public void nextCanvas() {
-    	currCanvasIndex++;
+        if (currCanvasIndex++ >= collection.size()) {
+            currCanvasIndex--;
+        }
     }
 
     // MODIFIES: this
     // EFFECTS: subtracts 1 to the current canvas index
     // if it does not go below 0
     public void prevCanvas() {
-    	currCanvasIndex--;
+        if (currCanvasIndex-- < 0) {
+            currCanvasIndex++;
+        }
     }
 
     // EFFECTS: returns the canvas at given index in the collection
