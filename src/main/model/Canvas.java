@@ -1,6 +1,5 @@
 package model;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import persistence.Writable;
@@ -25,6 +24,17 @@ public class Canvas implements Writable {
         setStylusXCoord(0);
         setStylusYCoord(0);
     }
+
+    // REQUIRES: stylusXCoord > 0 && stylusYCoord > 0 && board != null
+    // EFFECTS: copies board, set stylus coordinates to given
+    public Canvas(boolean[][] board, int stylusXCoord, int stylusYCoord) {
+		this.board = board;
+        height = board.length;
+        width = board[0].length;
+        
+        setStylusXCoord(stylusXCoord);
+        setStylusYCoord(stylusYCoord);
+	}
 
     // REQUIRES: move is valid
     // (direction == right || direction == left ||
@@ -109,11 +119,11 @@ public class Canvas implements Writable {
     // EFFECTS: returns a JSONObject containing the canvases in JSON format
     @Override
     public JSONObject toJson() {
-        return null;// stub
+        JSONObject json = new JSONObject();
+        json.put("stylusXCoord", stylusXCoord);
+        json.put("stylusYCoord", stylusYCoord);
+        json.put("canvas", board);
+        
+        return json;
     }
-
-    // EFFECTS: returns a JSONArray of JSON representation of the board
-	private JSONArray boardToJson() {
-        return null;// stub
-	}
 }

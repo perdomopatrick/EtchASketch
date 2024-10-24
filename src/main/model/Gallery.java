@@ -11,7 +11,7 @@ import persistence.Writable;
 public class Gallery implements Writable {
 
     private static Gallery instance;
-    private final ArrayList<Canvas> collection;
+    private ArrayList<Canvas> collection;
     private int currCanvasIndex;
 
     // EFFECTS: creates empty collection, set current canvas index to 0
@@ -28,6 +28,13 @@ public class Gallery implements Writable {
             instance = new Gallery();
         }
         return instance;
+    }
+
+        
+    // MODIFIES: this
+    // EFFECTS: update the existing singleton instance with deserialized collection
+    public void updateFrom(Gallery other) {
+        this.collection = other.collection;
     }
 
     // REQUIRES: width > 0 && height > 0
@@ -74,6 +81,12 @@ public class Gallery implements Writable {
     public void resetCurrCanvas() {
         currCanvasIndex = 0;
     }
+    
+    // MODIFIES: this
+    // EFFECTS: adds given canvas to collection
+    public void addCanvas(Canvas canvas) {
+        collection.add(canvas);
+	}
 
     public int getCurrCanvasIndex() {
         return currCanvasIndex;
@@ -82,11 +95,18 @@ public class Gallery implements Writable {
     // EFFECTS: returns a JSONObject containing the canvases in JSON format
     @Override
     public JSONObject toJson() {
-        return null;// stub
+        JSONObject json = new JSONObject();
+        json.put("canvases", canvasesToJson());
+    	return json;
     }
 
     // EFFECTS: returns a JSONArray of JSON representation of each Canvas in the collection
     private JSONArray canvasesToJson() {
-        return null;// stub
+        JSONArray jsonArray = new JSONArray();
+
+        for (Canvas c : collection) {
+            jsonArray.put(c.toJson());
+        }
+        return jsonArray;
     }
 }
