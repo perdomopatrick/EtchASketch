@@ -2,8 +2,13 @@ package model;
 
 import java.util.ArrayList;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import persistence.Writable;
+
 // Represents a Gallery having the list of board and the current index in view
-public class Gallery {
+public class Gallery implements Writable {
 
     private static Gallery instance;
     private final ArrayList<Canvas> collection;
@@ -72,5 +77,16 @@ public class Gallery {
 
     public int getCurrCanvasIndex() {
         return currCanvasIndex;
+    }
+
+    // EFFECTS: returns a JSONObject containing the canvases in JSON format
+    @Override
+    public JSONObject toJson() {
+        return null;// stub
+    }
+
+    // EFFECTS: returns a JSONArray of JSON representation of each Canvas in the collection
+    private JSONArray canvasesToJson() {
+        return null;// stub
     }
 }

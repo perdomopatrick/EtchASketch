@@ -1,7 +1,12 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import persistence.Writable;
+
 // Represents a canvas having the board, stylus coordinates and dimensions
-public class Canvas {
+public class Canvas implements Writable {
 
     private boolean[][] board;
     private int stylusXCoord;
@@ -100,4 +105,15 @@ public class Canvas {
     public int getWidth() {
         return width;
     }
+
+    // EFFECTS: returns a JSONObject containing the canvases in JSON format
+    @Override
+    public JSONObject toJson() {
+        return null;// stub
+    }
+
+    // EFFECTS: returns a JSONArray of JSON representation of the board
+	private JSONArray boardToJson() {
+        return null;// stub
+	}
 }
