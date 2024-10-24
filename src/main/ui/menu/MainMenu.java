@@ -30,8 +30,8 @@ public class MainMenu extends Menu {
     @Override
     public void prompt() {
         System.out.println("=== Main Menu ===");
-        System.out.println("- New cavnas (new, n)");
-        System.out.println("- View cavnas (view, v)");
+        System.out.println("- New canvas (new, n)");
+        System.out.println("- View canvas (view, v)");
         System.out.println("- Quit (quit, q)");
         System.out.print("Choose an option: ");
     }

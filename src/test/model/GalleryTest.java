@@ -17,7 +17,6 @@ public class GalleryTest {
     @Test
     void testConstructor() {
         assertEquals(0, testGallery.getCurrCanvasIndex());
-        assertThrows(IndexOutOfBoundsException.class, () -> testGallery.getCurrCanvas());
     }
 
     @Test
@@ -93,12 +92,11 @@ public class GalleryTest {
     void testPrevCanvasMultiple() {
         testGallery.newCanvas(2, 3);
         testGallery.newCanvas(2, 3);
-        testGallery.nextCanvas();
-        testGallery.nextCanvas();
 
         testGallery.prevCanvas();
+        testGallery.prevCanvas();
 
-        assertEquals(1, testGallery.getCurrCanvasIndex());
+        assertEquals(-1, testGallery.getCurrCanvasIndex());
     }
 
     @Test

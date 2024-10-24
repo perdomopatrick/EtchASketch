@@ -29,8 +29,8 @@ public class ViewMenu extends Menu {
     @Override
     public void prompt() {
         System.out.println("\n=== View Menu ===");
-        System.out.println("Next cavnas (next, n)");
-        System.out.println("Prev cavnas (prev, v)");
+        System.out.println("Next canvas (next, n)");
+        System.out.println("Prev canvas (prev, v)");
         System.out.println("Draw (draw, d)");
         System.out.println("Quit (quit, q)");
         System.out.print("Choose an option: ");

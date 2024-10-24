@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
+// Represents a Gallery having the list of board and the current index in view
 public class Gallery {
 
     private static Gallery instance;
