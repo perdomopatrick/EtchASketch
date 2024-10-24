@@ -19,3 +19,5 @@ The project is for anyone, especially for those who want to be creative and draw
 - As a user, I want to be able to draw on my canvas
 - As a user, I want to be able to see my canvas as I draw
 - As a user, I want to be able to reset/shake my canvas
+- As a user, I want to be able to having the option to save my gallery
+- As a user, I want to be able to having the option to load my gallery
