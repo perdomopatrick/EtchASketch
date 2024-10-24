@@ -26,6 +26,17 @@ public class CanvasTest {
     }
 
     @Test
+    void testSecondConstructor() {
+        testCanvas = new Canvas(expectedArray, 1, 2);
+        assertArrayEquals(expectedArray, testCanvas.getBoard());
+        assertEquals(3, testCanvas.getWidth());
+        assertEquals(2, testCanvas.getHeight());
+        assertEquals(1, testCanvas.getStylusXCoord());
+        assertEquals(2, testCanvas.getStylusYCoord());
+    }
+
+
+    @Test
     void testDrawRight() {
         assertTrue(testCanvas.draw("right", 2));
 

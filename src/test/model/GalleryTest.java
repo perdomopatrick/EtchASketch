@@ -31,6 +31,17 @@ public class GalleryTest {
     }
 
     @Test
+    void testUpdateFrom() {
+        Gallery otherGallery = new Gallery();
+        Canvas canvas1 = new Canvas(1, 2);
+        otherGallery.addCanvas(canvas1);
+
+        testGallery.updateFrom(otherGallery);
+        assertEquals(otherGallery.getCanvas(0), testGallery.getCanvas(0));
+        assertEquals(otherGallery.getCanvas(0), testGallery.getCanvas(0));
+    }
+
+    @Test
     void testNewCanvas() {
         testGallery.newCanvas(3, 2);
 
