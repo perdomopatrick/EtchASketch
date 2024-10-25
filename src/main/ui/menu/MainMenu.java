@@ -3,6 +3,8 @@ package ui.menu;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import org.json.JSONException;
+
 import model.Gallery;
 import persistence.JsonReader;
 import persistence.JsonWriter;
@@ -96,6 +98,8 @@ public class MainMenu extends Menu {
             System.out.println("Loaded from " + JSON_STORE);
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_STORE);
+        } catch (JSONException e) {
+            System.out.println("Unable to prase data from found file: " + JSON_STORE);
         }
     }
 }

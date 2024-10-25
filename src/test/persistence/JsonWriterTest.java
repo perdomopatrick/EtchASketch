@@ -54,7 +54,7 @@ public class JsonWriterTest {
         try {
             testGallery = new Gallery();
             testGallery.addCanvas(new Canvas(1, 2));
-            
+
             JsonWriter writer = new JsonWriter("./data/testWriterOneCanvas.json");
             writer.open();
             writer.write(testGallery);
@@ -64,7 +64,6 @@ public class JsonWriterTest {
             testGallery = reader.read();
 
             Canvas testCanvas = testGallery.getCanvas(0);
-
             boolean[][] expectedArray = new boolean[][] {
                     { false },
                     { false } };
@@ -79,14 +78,13 @@ public class JsonWriterTest {
         }
     }
 
-
     @Test
     void testWriterMultipleCanvas() {
         try {
             testGallery = new Gallery();
             testGallery.addCanvas(new Canvas(1, 2));
             testGallery.addCanvas(new Canvas(2, 1));
-            
+
             JsonWriter writer = new JsonWriter("./data/testWriterMultipleCanvases.json");
             writer.open();
             writer.write(testGallery);
@@ -97,13 +95,8 @@ public class JsonWriterTest {
 
             Canvas testCanvas = testGallery.getCanvas(0);
             Canvas testCanvas2 = testGallery.getCanvas(1);
-
-            boolean[][] expectedArray = new boolean[][] {
-                    { false },
-                    { false } };
-
-            boolean[][] expectedArray2 = new boolean[][] {
-                        { false, false }};
+            boolean[][] expectedArray = new boolean[][] {{ false }, { false } };
+            boolean[][] expectedArray2 = new boolean[][] { { false, false } };
 
             assertArrayEquals(expectedArray, testCanvas.getBoard());
             assertEquals(1, testCanvas.getWidth());
@@ -120,5 +113,4 @@ public class JsonWriterTest {
             fail("Exception should not have been thrown");
         }
     }
-
 }
