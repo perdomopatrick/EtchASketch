@@ -1,8 +1,18 @@
-{"canvases": [{
-    "canvas": [
-        [false],
-        [false]
-    ],
-    "stylusYCoord": 0,
-    "stylusXCoord": 0
-}]}
+{"canvases": [
+    {
+        "canvas": [
+            [false],
+            [false]
+        ],
+        "stylusYCoord": 0,
+        "stylusXCoord": 0
+    },
+    {
+        "canvas": [[
+            false,
+            false
+        ]],
+        "stylusYCoord": 0,
+        "stylusXCoord": 0
+    }
+]}

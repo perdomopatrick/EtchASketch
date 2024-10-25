@@ -28,13 +28,13 @@ public class Canvas implements Writable {
     // REQUIRES: stylusXCoord > 0 && stylusYCoord > 0 && board != null
     // EFFECTS: copies board, set stylus coordinates to given
     public Canvas(boolean[][] board, int stylusXCoord, int stylusYCoord) {
-		this.board = board;
+        this.board = board;
         height = board.length;
         width = board[0].length;
-        
+
         setStylusXCoord(stylusXCoord);
         setStylusYCoord(stylusYCoord);
-	}
+    }
 
     // REQUIRES: move is valid
     // (direction == right || direction == left ||
@@ -123,7 +123,7 @@ public class Canvas implements Writable {
         json.put("stylusXCoord", stylusXCoord);
         json.put("stylusYCoord", stylusYCoord);
         json.put("canvas", board);
-        
+
         return json;
     }
 }

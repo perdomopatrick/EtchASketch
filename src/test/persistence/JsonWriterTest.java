@@ -9,6 +9,7 @@ import model.Canvas;
 import model.Gallery;
 
 import java.io.IOException;
+
 public class JsonWriterTest {
 
     private Gallery testGallery;
@@ -53,7 +54,7 @@ public class JsonWriterTest {
         try {
             testGallery = new Gallery();
             testGallery.addCanvas(new Canvas(1, 2));
-            ;
+            
             JsonWriter writer = new JsonWriter("./data/testWriterOneCanvas.json");
             writer.open();
             writer.write(testGallery);
@@ -84,7 +85,8 @@ public class JsonWriterTest {
         try {
             testGallery = new Gallery();
             testGallery.addCanvas(new Canvas(1, 2));
-            ;
+            testGallery.addCanvas(new Canvas(2, 1));
+            
             JsonWriter writer = new JsonWriter("./data/testWriterMultipleCanvases.json");
             writer.open();
             writer.write(testGallery);
@@ -94,16 +96,26 @@ public class JsonWriterTest {
             testGallery = reader.read();
 
             Canvas testCanvas = testGallery.getCanvas(0);
+            Canvas testCanvas2 = testGallery.getCanvas(1);
 
             boolean[][] expectedArray = new boolean[][] {
                     { false },
                     { false } };
+
+            boolean[][] expectedArray2 = new boolean[][] {
+                        { false, false }};
 
             assertArrayEquals(expectedArray, testCanvas.getBoard());
             assertEquals(1, testCanvas.getWidth());
             assertEquals(2, testCanvas.getHeight());
             assertEquals(0, testCanvas.getStylusXCoord());
             assertEquals(0, testCanvas.getStylusYCoord());
+
+            assertArrayEquals(expectedArray2, testCanvas2.getBoard());
+            assertEquals(2, testCanvas2.getWidth());
+            assertEquals(1, testCanvas2.getHeight());
+            assertEquals(0, testCanvas2.getStylusXCoord());
+            assertEquals(0, testCanvas2.getStylusYCoord());
         } catch (IOException e) {
             fail("Exception should not have been thrown");
         }

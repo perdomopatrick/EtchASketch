@@ -72,14 +72,14 @@ public class MainMenu extends Menu {
             System.out.println("Exiting the game...");
             quit = true;
         } else if (command.equalsIgnoreCase("load") || command.equalsIgnoreCase("l")) {
-        	load();
+            load();
         } else {
-        	save();
+            save();
         }
     }
 
     private void save() {
-		try {
+        try {
             jsonWriter.open();
             jsonWriter.write(gallery);
             jsonWriter.close();
@@ -87,9 +87,9 @@ public class MainMenu extends Menu {
         } catch (FileNotFoundException e) {
             System.out.println("Unable to write to file: " + JSON_STORE);
         }
-	}
-	
-	private void load() {
+    }
+
+    private void load() {
         try {
             Gallery deserializedGallery = jsonReader.read();
             Gallery.getInstance().updateFrom(deserializedGallery);
