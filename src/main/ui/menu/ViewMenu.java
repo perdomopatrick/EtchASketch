@@ -18,6 +18,7 @@ public class ViewMenu extends Menu {
     public void menu() {
         String choice;
         gallery.resetCurrCanvas();
+        quit = false;
         do {
             viewCanvas();
             choice = getInputStr("next", "n", "prev", "p", "draw", "d", "quit", "q");

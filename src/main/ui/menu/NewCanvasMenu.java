@@ -21,6 +21,7 @@ public class NewCanvasMenu extends Menu {
     @Override
     public void menu() {
         String command;
+        quit = false;
         do {
             prompt();
             command = scanner.nextLine().trim();
