@@ -43,6 +43,7 @@ The project is for anyone, especially for those who want to be creative and draw
 - How to find the visual component
     1. In main menu, click 'Visual Component'
     2. You will see an image in the middle of the frame
+    - Credit to: https://github.com/djaiss/mapsicon for the 512x512 images
 - How to save your gallery
     1. In main menu, click 'Save Gallery'
 - How to load your gallery
