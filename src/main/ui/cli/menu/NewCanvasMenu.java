@@ -1,4 +1,4 @@
-package ui.menu;
+package ui.cli.menu;
 
 // New Canvas Menu
 public class NewCanvasMenu extends Menu {

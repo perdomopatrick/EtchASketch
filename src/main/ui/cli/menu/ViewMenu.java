@@ -1,4 +1,4 @@
-package ui.menu;
+package ui.cli.menu;
 
 // View Menu
 public class ViewMenu extends Menu {

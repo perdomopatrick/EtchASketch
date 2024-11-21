@@ -1,4 +1,4 @@
-package ui.menu;
+package ui.cli.menu;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -80,6 +80,7 @@ public class MainMenu extends Menu {
         }
     }
 
+    // EFFECTS: saves the Gallery
     private void save() {
         try {
             jsonWriter.open();
@@ -91,6 +92,8 @@ public class MainMenu extends Menu {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: load the Gallery
     private void load() {
         try {
             Gallery deserializedGallery = jsonReader.read();

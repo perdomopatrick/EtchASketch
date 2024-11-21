@@ -1,6 +1,6 @@
-package ui;
+package ui.cli;
 
-import ui.menu.MainMenu;
+import ui.cli.menu.MainMenu;
 
 public class Main {
 
