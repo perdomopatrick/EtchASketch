@@ -19,5 +19,31 @@ The project is for anyone, especially for those who want to be creative and draw
 - As a user, I want to be able to draw on my canvas
 - As a user, I want to be able to see my canvas as I draw
 - As a user, I want to be able to reset/shake my canvas
-- As a user, I want to be able to having the option to save my gallery
-- As a user, I want to be able to having the option to load my gallery
+- As a user, I want to be able to have the option to save my gallery
+- As a user, I want to be able to have the option to load my gallery
+
+- As a user, I want to be able to have the option to remap controls
+- As a user, I want to be able to have the option to save my canvas as a photo
+
+## Instructions for End User
+
+- How to add an canvas to gallery
+    1. In main menu, click 'New Canvas'
+    2. Enter desired width and height 
+    3. Click 'Create Canvas'
+- How to draw on canvas
+    1. Following the same steps above of 'how to add a canvas to gallery' 
+    2. You are now in the drawing menu
+    3. To move the stylus and start drawing use the arrow keys (Default controls)
+    4. If you do not like the controls, in the top left corner there is a remap controls menu bar
+    5. Click the direction you would like to remap, then click the new key
+- How to view canvases
+    1. In main menu, click 'View Canvas'
+    2. In the bottom, you can either go to the next Canvas or the previous by clicking the buttons
+- How to find the visual component
+    1. In main menu, click 'Visual Component'
+    2. You will see an image in the middle of the frame
+- How to save your gallery
+    1. In main menu, click 'Save Gallery'
+- How to load your gallery
+    1. In main menu, click 'Load Gallery'
