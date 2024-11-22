@@ -39,7 +39,16 @@ The project is for anyone, especially for those who want to be creative and draw
     5. Click the direction you would like to remap, then click the new key
 - How to view canvases
     1. In main menu, click 'View Canvas'
-    2. In the bottom, you can either go to the next Canvas or the previous by clicking the buttons
+    2. In the bottom, you can either go to the next or previous Canvas by clicking the buttons
+- How to export canvas to PNG
+    1. In main menu, click 'View Canvas'
+    2. Navigate to canvas you would like to export next Canvas and the previous Canvas buttons
+    3. At the top, click 'Export to .png' to export
+    4. Image will be in data folder
+- How to draw on old canvas
+    1. In main menu, click 'View Canvas'
+    2. Navigate to canvas you would like to export next Canvas and the previous Canvas buttons
+    3. At the bottom, click 'Draw'
 - How to find the visual component
     1. In main menu, click 'Visual Component'
     2. You will see an image in the middle of the frame
