@@ -109,6 +109,7 @@ public class ViewMenu extends Menu {
                             canvas.getBoard().length * cellHeight));
 
                     displayCanvas(canvas.getBoard(), g, cellWidth, cellHeight);
+                    canvasPanel.revalidate();
                     errorLabel.setText("");
                 } catch (IndexOutOfBoundsException e) {
                     errorLabel.setText("No canvas available");

@@ -60,6 +60,9 @@ public class DrawMenu extends Menu {
         JPanel buttonPanel = createButtons();
 
         JScrollPane scrollPane = new JScrollPane(drawingPanel);
+
+        removeAutoScroll(scrollPane);
+
         panel.add(buttonPanel, BorderLayout.NORTH);
         panel.add(scrollPane, BorderLayout.CENTER);
         panel.add(controlPanel, BorderLayout.SOUTH);
@@ -68,6 +71,15 @@ public class DrawMenu extends Menu {
 
         SwingUtilities.invokeLater(() -> drawingPanel.requestFocusInWindow());
         return panel;
+    }
+
+    // EFFECTS: removes auto scroll from the given scroll pane
+    private void removeAutoScroll(JScrollPane scrollPane) {
+        InputMap inputMap = scrollPane.getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        inputMap.put(KeyStroke.getKeyStroke("UP"), "none");
+        inputMap.put(KeyStroke.getKeyStroke("DOWN"), "none");
+        inputMap.put(KeyStroke.getKeyStroke("LEFT"), "none");
+        inputMap.put(KeyStroke.getKeyStroke("RIGHT"), "none");
     }
 
     // MODIFIES: this, mainMenu
