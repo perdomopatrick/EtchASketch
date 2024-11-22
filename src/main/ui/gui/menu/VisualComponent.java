@@ -19,7 +19,7 @@ public class VisualComponent extends Menu {
         super(mainMenu);
         
         panel = new JPanel(new FlowLayout());
-        JLabel label = new JLabel();
+        label = new JLabel();
         panel.add(label);
     }
 
