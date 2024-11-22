@@ -29,6 +29,7 @@ public class VisualComponent extends Menu {
 
         JTextField textField = new JTextField(20);
         JButton enterButton = new JButton("Enter");
+        JButton resetButton = new JButton("New Country");
         JButton quitButton = new JButton("Quit");
         quitButton.addActionListener(e -> mainMenu.showCard("MainMenu"));
         getRandomCountryName(label);
@@ -36,7 +37,7 @@ public class VisualComponent extends Menu {
         enterButton.addActionListener(e -> {
             String userInput = textField.getText().toLowerCase().replaceAll("\\s+", "");
 
-            if (userInput.equalsIgnoreCase(countryName)) {
+            if (userInput.equalsIgnoreCase(countryName.replaceAll("\\s+", ""))) {
                 JOptionPane.showMessageDialog(panel, "Correct!");
                 textField.setText("");
                 getRandomCountryName(label);
@@ -44,8 +45,16 @@ public class VisualComponent extends Menu {
                 JOptionPane.showMessageDialog(panel, "Incorrect! Try again!");
             }
         });
+
+        resetButton.addActionListener(e -> {
+            JOptionPane.showMessageDialog(panel, "Country: " + countryName);
+            textField.setText("");
+            getRandomCountryName(label);
+        });
+
         panel.add(textField);
         panel.add(enterButton);
+        panel.add(resetButton);
         panel.add(quitButton);
         return panel;
     }
