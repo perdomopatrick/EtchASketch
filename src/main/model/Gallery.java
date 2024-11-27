@@ -54,8 +54,8 @@ public class Gallery implements Writable {
     public void nextCanvas() {
         if (currCanvasIndex++ >= collection.size()) {
             currCanvasIndex--;
-            EventLog.getInstance().logEvent(new Event("Subtracted one from current canvas index"));
         }
+        EventLog.getInstance().logEvent(new Event("Added one from current canvas index"));
     }
 
     // MODIFIES: this
@@ -64,8 +64,8 @@ public class Gallery implements Writable {
     public void prevCanvas() {
         if (currCanvasIndex-- < 0) {
             currCanvasIndex++;
-            EventLog.getInstance().logEvent(new Event("Added one from current canvas index"));
         }
+        EventLog.getInstance().logEvent(new Event("Subtracted one from current canvas index"));
     }
 
     // EFFECTS: returns the canvas at given index in the collection

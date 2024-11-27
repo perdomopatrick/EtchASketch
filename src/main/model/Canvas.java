@@ -60,7 +60,7 @@ public class Canvas implements Writable {
             }
             EventLog.getInstance().logEvent(new Event("Drew " + direction + " by " + length));
         } catch (IndexOutOfBoundsException e) {
-            EventLog.getInstance().logEvent(new Event("Drew " + direction + " by " + length + " (Went Out of Bounds)"));
+            EventLog.getInstance().logEvent(new Event("Drew " + direction + " by " + length + " (Hit the border)"));
             return false;
         }
         return true;
@@ -106,7 +106,7 @@ public class Canvas implements Writable {
 
     protected void setStylusYCoord(int stylusYCoord) {
         this.stylusYCoord = stylusYCoord;
-        EventLog.getInstance().logEvent(new Event("Set stylus Y coordinate to " + stylusXCoord));
+        EventLog.getInstance().logEvent(new Event("Set stylus Y coordinate to " + stylusYCoord));
     }
 
     public int getStylusXCoord() {

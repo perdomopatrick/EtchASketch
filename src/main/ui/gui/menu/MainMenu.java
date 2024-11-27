@@ -136,7 +136,10 @@ public class MainMenu extends Menu {
         newCanvasButton.addActionListener(e -> showCard("NewCanvasMenu"));
 
         JButton viewCanvasButton = new JButton("View Gallery");
-        viewCanvasButton.addActionListener(e -> showCard("ViewMenu"));
+        viewCanvasButton.addActionListener(e -> {
+            gallery.resetCurrCanvas();
+            showCard("ViewMenu");
+        });
 
         JButton loadButton = new JButton("Load Gallery");
         loadButton.addActionListener(e -> load());
@@ -156,7 +159,7 @@ public class MainMenu extends Menu {
         panel.add(saveButton);
         panel.add(quitButton);
         panel.add(visualComponentButton);
-
+        
         return panel;
     }
 
