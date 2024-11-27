@@ -121,3 +121,10 @@ Drew down by 1 (Hit the border) <br>
 Wed Nov 27 11:39:45 PST 2024 <br>
 Shaked canvas <br>
 
+### Phase 4: Task 3
+
+![alt text](UML_Design_Diagram.png)
+
+One thing that I could refactor is the Gallery and how it is used by other classes. I made Gallery a singleton before really understanding the pattern completely and I think that not only did I not implement the singleton that well, I also don't think it was the right place to use the singleton pattern. If I were to refactor it, instead of make Gallery a singleton, I would create an instance of Gallery in the MainMenu and pass it as a argument to other menus.
+
+I would also refactor the way the menus interact with each other because it seems like there's a lot of coupling in the UML diagram between the main menu and the other menus that isn't exclusively necessary. Maybe, I could create a menu manager class to handle transitions between menus, so individual menus don’t need to know about each other.
