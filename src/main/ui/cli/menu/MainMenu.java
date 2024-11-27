@@ -96,8 +96,8 @@ public class MainMenu extends Menu {
     // EFFECTS: load the Gallery
     private void load() {
         try {
-            Gallery deserializedGallery = jsonReader.read();
-            Gallery.getInstance().updateFrom(deserializedGallery);
+            Gallery.getInstance().clear();;
+            jsonReader.read();
             System.out.println("Loaded from " + JSON_STORE);
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_STORE);
