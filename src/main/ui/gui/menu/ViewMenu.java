@@ -46,10 +46,10 @@ public class ViewMenu extends Menu {
     private JPanel createQuitAndExportButtons() {
         JPanel buttonPanel = new JPanel(new GridLayout(1, 2));
 
-        JButton quitButton = new JButton("Quit");
+        JButton quitButton = new JButton("Main Menu");
         quitButton.addActionListener(e -> mainMenu.showCard("MainMenu"));
 
-        JButton exportButton = new JButton("Export to .png");
+        JButton exportButton = new JButton("Export as PNG");
 
         exportButton.addActionListener(e -> saveCanvasToFile());
 
