@@ -15,7 +15,7 @@ public class Gallery implements Writable {
     private int currCanvasIndex;
 
     // EFFECTS: creates empty collection, set current canvas index to 0
-    public Gallery() {
+    private Gallery() {
         collection = new ArrayList<>();
         currCanvasIndex = 0;
     }
@@ -30,10 +30,10 @@ public class Gallery implements Writable {
         return instance;
     }
 
-    // MODIFIES: this
-    // EFFECTS: update the existing singleton instance with deserialized collection
-    public void updateFrom(Gallery other) {
-        this.collection = other.collection;
+    // EFFECTS: clear collection and set current canvas index to 0
+    public void clear() {
+        collection = new ArrayList<>();
+        currCanvasIndex = 0;    
     }
 
     // REQUIRES: width > 0 && height > 0
