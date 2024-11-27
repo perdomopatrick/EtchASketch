@@ -21,6 +21,7 @@ public class Canvas implements Writable {
         board = new boolean[height][width];
         this.width = width;
         this.height = height;
+        EventLog.getInstance().logEvent(new Event("New " + width+ "x" + height + " canvas"));
         setStylusXCoord(0);
         setStylusYCoord(0);
     }
@@ -32,6 +33,7 @@ public class Canvas implements Writable {
         height = board.length;
         width = board[0].length;
 
+        EventLog.getInstance().logEvent(new Event("Created loaded canvas"));
         setStylusXCoord(stylusXCoord);
         setStylusYCoord(stylusYCoord);
     }
@@ -42,7 +44,7 @@ public class Canvas implements Writable {
     // length >= 0
     // MODIFIES: this
     // EFFECTS: check for direction and draws in that direction by length amount
-    // if move goes out of bounds returns false otherwise true
+    // if invailf move like goes out of bounds returns false otherwise true
     public boolean draw(String direction, int length) {
         try {
             if (direction.equals("up")) {
@@ -51,10 +53,14 @@ public class Canvas implements Writable {
                 colourColumn(stylusYCoord + 1, stylusYCoord + length, 1);
             } else if (direction.equals("left")) {
                 colourRow(stylusXCoord - 1, stylusXCoord - length, -1);
-            } else { // right
+            } else if (direction.equals("right")) {
                 colourRow(stylusXCoord + 1, stylusXCoord + length, 1);
+            } else {
+                return false;
             }
+            EventLog.getInstance().logEvent(new Event("Drew " + direction + " by " + length));
         } catch (IndexOutOfBoundsException e) {
+            EventLog.getInstance().logEvent(new Event("Drew " + direction + " by " + length + " (Went Out of Bounds)"));
             return false;
         }
         return true;
@@ -86,6 +92,7 @@ public class Canvas implements Writable {
     // EFFECTS: Reset the board to be empty
     public void shake() {
         board = new boolean[height][width];
+        EventLog.getInstance().logEvent(new Event("Shaked canvas"));
     }
 
     public boolean[][] getBoard() {
@@ -94,10 +101,12 @@ public class Canvas implements Writable {
 
     protected void setStylusXCoord(int stylusXCoord) {
         this.stylusXCoord = stylusXCoord;
+        EventLog.getInstance().logEvent(new Event("Set stylus X coordinate to " + stylusXCoord));
     }
 
     protected void setStylusYCoord(int stylusYCoord) {
         this.stylusYCoord = stylusYCoord;
+        EventLog.getInstance().logEvent(new Event("Set stylus Y coordinate to " + stylusXCoord));
     }
 
     public int getStylusXCoord() {

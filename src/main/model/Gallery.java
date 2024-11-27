@@ -44,6 +44,8 @@ public class Gallery implements Writable {
         Canvas newCanvas = new Canvas(width, height);
         collection.add(newCanvas);
         currCanvasIndex = collection.indexOf(newCanvas);
+        EventLog.getInstance().logEvent(new Event("Added new " + width+ "x" + height + " canvas to gallery"));
+
     }
 
     // MODIFIES: this
@@ -52,6 +54,7 @@ public class Gallery implements Writable {
     public void nextCanvas() {
         if (currCanvasIndex++ >= collection.size()) {
             currCanvasIndex--;
+            EventLog.getInstance().logEvent(new Event("Subtracted one from current canvas index"));
         }
     }
 
@@ -61,6 +64,7 @@ public class Gallery implements Writable {
     public void prevCanvas() {
         if (currCanvasIndex-- < 0) {
             currCanvasIndex++;
+            EventLog.getInstance().logEvent(new Event("Added one from current canvas index"));
         }
     }
 
@@ -79,12 +83,14 @@ public class Gallery implements Writable {
     // EFFECTS: sets current canvas index to 0
     public void resetCurrCanvas() {
         currCanvasIndex = 0;
+        EventLog.getInstance().logEvent(new Event("Reset current canvas index to zero"));
     }
 
     // MODIFIES: this
     // EFFECTS: adds given canvas to collection
     public void addCanvas(Canvas canvas) {
         collection.add(canvas);
+        EventLog.getInstance().logEvent(new Event("Added given canvas to gallery"));
     }
 
     public int getCurrCanvasIndex() {
