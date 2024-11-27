@@ -1,6 +1,9 @@
 package ui.gui.menu;
 
 import model.Gallery;
+import model.Event;
+import model.EventLog;
+
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
@@ -9,6 +12,10 @@ import org.json.JSONException;
 import javax.swing.*;
 
 import java.awt.*;
+
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -59,9 +66,33 @@ public class MainMenu extends Menu {
     // EFFECTS: Initializes and displays the game window. adds the main panel to the frame,
     // makes the frame visible.
     public void runGame() {
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.add(mainPanel);
         frame.setSize(700, 750);
+
+        frame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                printLog();
+            }
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+                for (Event next : EventLog.getInstance()) {
+                    System.out.println(next.toString());
+                }
+                System.exit(0);
+            }
+
+            // EFFECTS: print event log to the console
+            private void printLog() {
+                for (Event next : EventLog.getInstance()) {
+                    System.out.println(next.toString());
+                }
+                System.exit(0);
+            }
+        });
+        
         frame.setVisible(true);
     }
 
@@ -115,7 +146,7 @@ public class MainMenu extends Menu {
         saveButton.addActionListener(e -> save());
 
         JButton quitButton = new JButton("Quit");
-        quitButton.addActionListener(e -> System.exit(0));
+        quitButton.addActionListener(e -> frame.dispose());
 
         JButton visualComponentButton = new JButton("Visual Component");
         visualComponentButton.addActionListener(e -> showCard("VisualComponent"));
@@ -146,8 +177,8 @@ public class MainMenu extends Menu {
     // EFFECTS: load the Gallery
     private void load() {
         try {
-            Gallery deserializedGallery = jsonReader.read();
-            Gallery.getInstance().updateFrom(deserializedGallery);
+            Gallery.getInstance().clear();;
+            jsonReader.read();
             JOptionPane.showMessageDialog(mainPanel, "Loaded from " + JSON_STORE);
         } catch (IOException e) {
             JOptionPane.showMessageDialog(mainPanel, "Unable to read from file: " + JSON_STORE);
