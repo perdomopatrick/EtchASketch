@@ -11,7 +11,8 @@ public class GalleryTest {
 
     @BeforeEach
     void runBefore() {
-        testGallery = new Gallery();
+        Gallery.getInstance().clear();
+        testGallery = Gallery.getInstance();
     }
 
     @Test
@@ -31,14 +32,17 @@ public class GalleryTest {
     }
 
     @Test
-    void testUpdateFrom() {
-        Gallery otherGallery = new Gallery();
-        Canvas canvas1 = new Canvas(1, 2);
-        otherGallery.addCanvas(canvas1);
+    void testClear() {
+        testGallery.newCanvas(3, 2);
 
-        testGallery.updateFrom(otherGallery);
-        assertEquals(otherGallery.getCanvas(0), testGallery.getCanvas(0));
-        assertEquals(otherGallery.getCanvas(0), testGallery.getCanvas(0));
+        Gallery.getInstance().clear();
+
+        try {
+            testGallery.getCanvas(0);
+            fail("Has canvas");
+        } catch (IndexOutOfBoundsException e) {
+            // pass
+        }
     }
 
     @Test
