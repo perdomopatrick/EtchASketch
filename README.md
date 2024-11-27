@@ -60,65 +60,64 @@ The project is for anyone, especially for those who want to be creative and draw
 
 
 ### Phase 4: Task 2
-Wed Nov 27 11:29:29 PST 2024 <br>
-New 3x3 canvas <br>
-Wed Nov 27 11:29:29 PST 2024 <br>
+Wed Nov 27 11:39:26 PST 2024 <br>
+New 2x3 canvas <br>
+Wed Nov 27 11:39:26 PST 2024 <br>
 Set stylus X coordinate to 0 <br>
-Wed Nov 27 11:29:29 PST 2024 <br>
+Wed Nov 27 11:39:26 PST 2024 <br>
 Set stylus Y coordinate to 0 <br>
-Wed Nov 27 11:29:29 PST 2024 <br>
-Added new 3x3 canvas to gallery <br>
-Wed Nov 27 11:29:29 PST 2024 <br>
+Wed Nov 27 11:39:26 PST 2024 <br>
+Added new 2x3 canvas to gallery <br>
+Wed Nov 27 11:39:27 PST 2024 <br>
 Set stylus X coordinate to 1 <br>
-Wed Nov 27 11:29:30 PST 2024 <br>
+Wed Nov 27 11:39:27 PST 2024 <br>
 Drew right by 1 <br>
-Wed Nov 27 11:29:30 PST 2024 <br>
-Set stylus X coordinate to 2 <br>
-Wed Nov 27 11:29:30 PST 2024 <br>
-Drew right by 1 <br>
-Wed Nov 27 11:29:32 PST 2024 <br>
-New 3x3 canvas <br>
-Wed Nov 27 11:29:32 PST 2024 <br>
-Set stylus X coordinate to 0 <br>
-Wed Nov 27 11:29:32 PST 2024 <br>
-Set stylus Y coordinate to 0 <br>
-Wed Nov 27 11:29:32 PST 2024 <br>
-Added new 3x3 canvas to gallery <br>
-Wed Nov 27 11:29:32 PST 2024 <br>
+Wed Nov 27 11:39:27 PST 2024 <br>
 Set stylus Y coordinate to 1 <br>
-Wed Nov 27 11:29:32 PST 2024 <br>
+Wed Nov 27 11:39:27 PST 2024 <br>
 Drew down by 1 <br>
-Wed Nov 27 11:29:33 PST 2024 <br>
+Wed Nov 27 11:39:27 PST 2024 <br>
+Set stylus X coordinate to 0 <br>
+Wed Nov 27 11:39:27 PST 2024 <br>
+Drew left by 1 <br>
+Wed Nov 27 11:39:27 PST 2024 <br>
+Set stylus Y coordinate to 0 <br>
+Wed Nov 27 11:39:27 PST 2024 <br>
+Drew up by 1 <br>
+Wed Nov 27 11:39:29 PST 2024 <br> 
+Drew up by 1 (Hit the border)<br> 
+Wed Nov 27 11:39:29 PST 2024 <br>
+Drew left by 1 (Hit the border) <br>
+Wed Nov 27 11:39:35 PST 2024 <br>
+Created loaded canvas <br>
+Wed Nov 27 11:39:35 PST 2024 <br>
+Set stylus X coordinate to 2 <br>
+Wed Nov 27 11:39:35 PST 2024 <br>
+Set stylus Y coordinate to 1 <br>
+Wed Nov 27 11:39:35 PST 2024 <br>
+Added given canvas to gallery <br>
+Wed Nov 27 11:39:35 PST 2024 <br>
+Created loaded canvas <br>
+Wed Nov 27 11:39:35 PST 2024 <br>
+Set stylus X coordinate to 1 <br>
+Wed Nov 27 11:39:35 PST 2024 <br>
 Set stylus Y coordinate to 2 <br>
-Wed Nov 27 11:29:33 PST 2024 <br>
-Drew down by 1 <br>
-Wed Nov 27 11:29:33 PST 2024 <br>
-Drew down by 1 (Hit the border) <br>
-Wed Nov 27 11:29:38 PST 2024 <br>
+Wed Nov 27 11:39:35 PST 2024 <br>
+Added given canvas to gallery <br>
+Wed Nov 27 11:39:37 PST 2024 <br>
 Reset current canvas index to zero <br>
-Wed Nov 27 11:29:41 PST 2024 <br>
-Added one from current canvas index <br> 
-Wed Nov 27 11:29:42 PST 2024 <br>
+Wed Nov 27 11:39:39 PST 2024 <br>
+Added one from current canvas index <br>
+Wed Nov 27 11:39:40 PST 2024 <br>
 Subtracted one from current canvas index <br>
-Wed Nov 27 11:29:46 PST 2024 <br>
-Shaked canvas <br>
-Wed Nov 27 11:29:49 PST 2024 <br>
-Drew right by 1 (Hit the border) <br> 
-Wed Nov 27 11:29:54 PST 2024 <br>
-Created loaded canvas <br>
-Wed Nov 27 11:29:54 PST 2024 <br>
-Set stylus X coordinate to 2 <br>
-Wed Nov 27 11:29:54 PST 2024 <br>
-Set stylus Y coordinate to 1 <br>
-Wed Nov 27 11:29:54 PST 2024 <br>
-Added given canvas to gallery <br>
-Wed Nov 27 11:29:54 PST 2024 <br>
-Created loaded canvas <br>
-Wed Nov 27 11:29:54 PST 2024 <br>
-Set stylus X coordinate to 1 <br>
-Wed Nov 27 11:29:54 PST 2024 <br>
+Wed Nov 27 11:39:43 PST 2024 <br>
+Drew right by 1 (Hit the border) <br>
+Wed Nov 27 11:39:43 PST 2024 <br>
 Set stylus Y coordinate to 2 <br>
-Wed Nov 27 11:29:54 PST 2024 <br>
-Added given canvas to gallery <br>
-Wed Nov 27 11:29:59 PST 2024 <br>
-Reset current canvas index to zero <br>
+Wed Nov 27 11:39:43 PST 2024 <br>
+Drew down by 1 <br>
+Wed Nov 27 11:39:43 PST 2024 <br>
+Drew down by 1 (Hit the border) <br>
+Wed Nov 27 11:39:45 PST 2024 <br>
+Shaked canvas <br>
+
