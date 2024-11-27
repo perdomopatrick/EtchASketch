@@ -16,8 +16,6 @@ public class MainMenu extends Menu {
     private final NewCanvasMenu newCanvasMenu;
 
     private static final String JSON_STORE = "./data/gallery.json";
-    private JsonWriter jsonWriter;
-    private JsonReader jsonReader;
 
     // EFFECTS: creates instances of ViewMenu and NewCanvasMenu,
     // and sets quit to false
@@ -25,9 +23,6 @@ public class MainMenu extends Menu {
         viewMenu = new ViewMenu();
         newCanvasMenu = new NewCanvasMenu();
         quit = false;
-
-        jsonWriter = new JsonWriter(JSON_STORE);
-        jsonReader = new JsonReader(JSON_STORE);
     }
 
     // EFFECTS: Main menu, gets the user's valid input then sends input to be
@@ -83,6 +78,7 @@ public class MainMenu extends Menu {
     // EFFECTS: saves the Gallery
     private void save() {
         try {
+            JsonWriter jsonWriter = new JsonWriter(JSON_STORE);
             jsonWriter.open();
             jsonWriter.write(gallery);
             jsonWriter.close();
@@ -96,6 +92,8 @@ public class MainMenu extends Menu {
     // EFFECTS: load the Gallery
     private void load() {
         try {
+            JsonReader jsonReader = new JsonReader(JSON_STORE);
+
             Gallery.getInstance().clear();;
             jsonReader.read();
             System.out.println("Loaded from " + JSON_STORE);

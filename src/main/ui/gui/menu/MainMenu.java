@@ -32,8 +32,6 @@ public class MainMenu extends Menu {
     private final VisualComponent visualComponent;
 
     private static final String JSON_STORE = "./data/gallery.json";
-    private JsonWriter jsonWriter;
-    private JsonReader jsonReader;
 
     private JPanel mainPanel;
     private CardLayout cardLayout;
@@ -48,9 +46,6 @@ public class MainMenu extends Menu {
         drawMenu = new DrawMenu(this);
 
         visualComponent = new VisualComponent(this);
-
-        jsonWriter = new JsonWriter(JSON_STORE);
-        jsonReader = new JsonReader(JSON_STORE);
 
         mainPanel = new JPanel();
         cardLayout = new CardLayout();
@@ -168,6 +163,8 @@ public class MainMenu extends Menu {
     // EFFECTS: saves the Gallery
     private void save() {
         try {
+            JsonWriter jsonWriter = new JsonWriter(JSON_STORE);
+
             jsonWriter.open();
             jsonWriter.write(Gallery.getInstance());
             jsonWriter.close();
@@ -181,6 +178,7 @@ public class MainMenu extends Menu {
     // EFFECTS: load the Gallery
     private void load() {
         try {
+            JsonReader jsonReader = new JsonReader(JSON_STORE);
             Gallery.getInstance().clear();;
             jsonReader.read();
             JOptionPane.showMessageDialog(mainPanel, "Loaded from " + JSON_STORE);
