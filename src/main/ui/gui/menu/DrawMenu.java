@@ -2,20 +2,41 @@ package ui.gui.menu;
 
 import model.Canvas;
 
-import javax.swing.*;
-import java.awt.*;
-
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Graphics;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+import javax.swing.BorderFactory;
+import javax.swing.InputMap;
+import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.KeyStroke;
+import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
+
 // Draw Menu
 public class DrawMenu extends Menu {
-
+   
+    private JPanel panel;
     private JPanel drawingPanel;
-    private Canvas canvas;
-
+    private JPanel controlPanel;
+    
     private int keyUp;
     private int keyDown;
     private int keyLeft;
@@ -44,19 +65,18 @@ public class DrawMenu extends Menu {
     // sets up the drawing panel, control panel, and button panel
     @Override
     public JPanel menu() {
+        panel = new JPanel(new BorderLayout());
         try {
-            canvas = gallery.getCurrCanvas();
+            gallery.getCurrCanvas();
         } catch (IndexOutOfBoundsException e) {
-            JPanel panel = new JPanel();
+            panel.setLayout(new FlowLayout());
             panel.add(new JLabel("No canvas created yet"));
             panel.add(createQuitButton());
             return panel;
         }
 
-        JPanel panel = new JPanel(new BorderLayout());
-
         createDrawingPanel();
-        JPanel controlPanel = createControlPanel();
+        createControlPanel();
         JPanel buttonPanel = createButtons();
 
         JScrollPane scrollPane = new JScrollPane(drawingPanel);
@@ -65,7 +85,6 @@ public class DrawMenu extends Menu {
 
         panel.add(buttonPanel, BorderLayout.NORTH);
         panel.add(scrollPane, BorderLayout.CENTER);
-        panel.add(controlPanel, BorderLayout.SOUTH);
 
         remapMenuBar();
 
@@ -112,7 +131,9 @@ public class DrawMenu extends Menu {
     // MODIFIES: this
     // EFFECTS: Removes the ermap menu from the menu bar
     private void removeMenuBar() {
-        menuBar.remove(settingsMenu);
+        if (menuBar != null) {
+            menuBar.remove(settingsMenu);
+        }
     }
 
     // EFFECTS: Creates and returns a panel containing quit and shake buttons,
@@ -123,7 +144,7 @@ public class DrawMenu extends Menu {
         shakeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                canvas.shake();
+                gallery.getCurrCanvas().shake();
                 drawingPanel.repaint();
                 SwingUtilities.invokeLater(() -> drawingPanel.requestFocusInWindow());
             }
@@ -137,14 +158,20 @@ public class DrawMenu extends Menu {
         return buttonPanel;
     }
 
-    // EFFECTS: Creates and returns a panel with the current key controls
-    private JPanel createControlPanel() {
-        JPanel controlPanel = new JPanel(new GridLayout(1, 4));
-        controlPanel.add(new JLabel(KeyEvent.getKeyText(keyLeft) + " (Left)", JLabel.CENTER));
-        controlPanel.add(new JLabel(KeyEvent.getKeyText(keyRight) + " (Right)", JLabel.CENTER));
-        controlPanel.add(new JLabel(KeyEvent.getKeyText(keyUp) + " (Up)", JLabel.CENTER));
-        controlPanel.add(new JLabel(KeyEvent.getKeyText(keyDown) + " (Down)", JLabel.CENTER));
-        return controlPanel;
+    // MODIFIES: this
+    // EFFECTS: Creates and adds control panel with the current key controls to the main panel
+    private void createControlPanel() {
+        if (controlPanel != null) {
+            panel.remove(controlPanel);
+        }
+        controlPanel = new JPanel(new GridLayout(1, 4));
+        controlPanel.add(new JLabel("Left (" + KeyEvent.getKeyText(keyLeft) + ")", JLabel.CENTER));
+        controlPanel.add(new JLabel("Right (" + KeyEvent.getKeyText(keyRight) + ")", JLabel.CENTER));
+        controlPanel.add(new JLabel("Up (" + KeyEvent.getKeyText(keyUp) + ")", JLabel.CENTER));
+        controlPanel.add(new JLabel("Down (" + KeyEvent.getKeyText(keyDown) + ")", JLabel.CENTER));
+        panel.add(controlPanel, BorderLayout.SOUTH);
+        panel.revalidate();
+        panel.repaint();
     }
 
     // EFFECTS: Creates and returns a the quit button,
@@ -169,6 +196,8 @@ public class DrawMenu extends Menu {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
 
+                Canvas canvas = gallery.getCurrCanvas();
+
                 int cellWidth = Math.max(mainMenu.getWidth() / canvas.getBoard()[0].length, 1);
                 int cellHeight = Math.max(mainMenu.getHeight() / canvas.getBoard().length, 1);
 
@@ -192,6 +221,7 @@ public class DrawMenu extends Menu {
             @Override
             public void keyPressed(KeyEvent e) {
                 int keyCode = e.getKeyCode();
+                Canvas canvas = gallery.getCurrCanvas();
 
                 if (keyCode == keyRight) {
                     canvas.draw("right", 1);
@@ -203,6 +233,7 @@ public class DrawMenu extends Menu {
                     canvas.draw("down", 1);
                 }
                 drawingPanel.repaint();
+                createControlPanel();
             }
         });
     }
