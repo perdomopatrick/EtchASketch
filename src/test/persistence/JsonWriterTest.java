@@ -3,6 +3,8 @@ package persistence;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
+
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import model.Canvas;
@@ -13,6 +15,12 @@ import java.io.IOException;
 public class JsonWriterTest {
 
     private Gallery testGallery;
+
+    @BeforeEach
+    void setup() {
+        Gallery.getInstance().clear();
+        testGallery = Gallery.getInstance();
+    }
 
     @Test
     void testWriterInvalidFile() {
@@ -28,14 +36,13 @@ public class JsonWriterTest {
     @Test
     void testWriterEmpty() {
         try {
-            testGallery = new Gallery();
             JsonWriter writer = new JsonWriter("./data/testWriterEmpty.json");
             writer.open();
             writer.write(testGallery);
             writer.close();
 
             JsonReader reader = new JsonReader("./data/testWriterEmpty.json");
-            testGallery = reader.read();
+            reader.read();
 
         } catch (IOException e) {
             fail("Exception should not have been thrown");
@@ -52,7 +59,6 @@ public class JsonWriterTest {
     @Test
     void testWriterOneCanvas() {
         try {
-            testGallery = new Gallery();
             testGallery.addCanvas(new Canvas(1, 2));
 
             JsonWriter writer = new JsonWriter("./data/testWriterOneCanvas.json");
@@ -61,7 +67,7 @@ public class JsonWriterTest {
             writer.close();
 
             JsonReader reader = new JsonReader("./data/testWriterOneCanvas.json");
-            testGallery = reader.read();
+            reader.read();
 
             Canvas testCanvas = testGallery.getCanvas(0);
             boolean[][] expectedArray = new boolean[][] {
@@ -81,7 +87,6 @@ public class JsonWriterTest {
     @Test
     void testWriterMultipleCanvas() {
         try {
-            testGallery = new Gallery();
             testGallery.addCanvas(new Canvas(1, 2));
             testGallery.addCanvas(new Canvas(2, 1));
 
@@ -91,7 +96,7 @@ public class JsonWriterTest {
             writer.close();
 
             JsonReader reader = new JsonReader("./data/testWriterMultipleCanvases.json");
-            testGallery = reader.read();
+            reader.read();
 
             Canvas testCanvas = testGallery.getCanvas(0);
             Canvas testCanvas2 = testGallery.getCanvas(1);

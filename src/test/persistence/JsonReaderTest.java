@@ -1,5 +1,6 @@
 package persistence;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import model.Canvas;
@@ -15,23 +16,29 @@ class JsonReaderTest {
     private boolean[][] expectedArray;
     private Canvas testCanvas; 
 
+    @BeforeEach
+    void setup() {
+        Gallery.getInstance().clear();
+        testGallery = Gallery.getInstance();
+    }
+
     @Test
     void testReaderNonExistentFile() {
         JsonReader reader = new JsonReader("./data/noSuchFile.json");
         try {
-            testGallery = reader.read();
+            reader.read();
             fail("IOException expected");
         } catch (IOException e) {
             // pass
         }
-        assertNull(testGallery);
+        assertEquals(0, testGallery.getCurrCanvasIndex());
     }
 
     @Test
     void testReaderEmpty() {
         JsonReader reader = new JsonReader("./data/testReaderEmpty.json");
         try {
-            testGallery = reader.read();
+            reader.read();
         } catch (IOException e) {
             fail("Couldn't read from file");
         }
@@ -48,7 +55,7 @@ class JsonReaderTest {
     void testReaderOneCanvas() {
         JsonReader reader = new JsonReader("./data/testReaderOneCanvas.json");
         try {
-            testGallery = reader.read();
+            reader.read();
         } catch (IOException e) {
             fail("Couldn't read from file");
         }
@@ -71,7 +78,7 @@ class JsonReaderTest {
     void testReaderMultipleCanvases() {
         JsonReader reader = new JsonReader("./data/testReaderMultipleCanvases.json");
         try {
-            testGallery = reader.read();
+            reader.read();
         } catch (IOException e) {
             fail("Couldn't read from file");
         }
