@@ -4,14 +4,15 @@ import model.Canvas;
 
 import javax.swing.*;
 import java.awt.*;
-
 import java.awt.image.BufferedImage;
+
 import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+// View Menu
 public class ViewMenu extends Menu {
 
     private JPanel canvasPanel;

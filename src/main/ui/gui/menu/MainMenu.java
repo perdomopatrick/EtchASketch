@@ -9,15 +9,19 @@ import persistence.JsonWriter;
 
 import org.json.JSONException;
 
-import javax.swing.*;
-
-import java.awt.*;
-
+import java.awt.CardLayout;
+import java.awt.GridLayout;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JMenuBar;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 // Main Menu
 public class MainMenu extends Menu {

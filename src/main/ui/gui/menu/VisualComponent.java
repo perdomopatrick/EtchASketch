@@ -4,7 +4,13 @@ import java.awt.FlowLayout;
 import java.io.File;
 import java.util.Random;
 
-import javax.swing.*;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
 
 // VisualComponent menu; guess the country game based off an image of its outline 
 public class VisualComponent extends Menu {

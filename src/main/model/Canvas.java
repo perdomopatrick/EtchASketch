@@ -21,7 +21,7 @@ public class Canvas implements Writable {
         board = new boolean[height][width];
         this.width = width;
         this.height = height;
-        EventLog.getInstance().logEvent(new Event("New " + width+ "x" + height + " canvas"));
+        EventLog.getInstance().logEvent(new Event("New " + width + "x" + height + " canvas"));
         setStylusXCoord(0);
         setStylusYCoord(0);
     }

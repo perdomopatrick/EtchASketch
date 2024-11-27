@@ -44,7 +44,7 @@ public class Gallery implements Writable {
         Canvas newCanvas = new Canvas(width, height);
         collection.add(newCanvas);
         currCanvasIndex = collection.indexOf(newCanvas);
-        EventLog.getInstance().logEvent(new Event("Added new " + width+ "x" + height + " canvas to gallery"));
+        EventLog.getInstance().logEvent(new Event("Added new " + width + "x" + height + " canvas to gallery"));
 
     }
 

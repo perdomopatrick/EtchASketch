@@ -1,11 +1,17 @@
 package ui.gui.menu;
 
-import javax.swing.*;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+// New Canvas Menu
 public class NewCanvasMenu extends Menu {
 
     // EFFECTS: Initializes NewCanvasMenu with the given mainMenu
