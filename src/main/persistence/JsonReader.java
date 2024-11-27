@@ -25,10 +25,10 @@ public class JsonReader {
 
     // EFFECTS: reads gallery from file and returns it;
     // throws IOException if an error occurs reading data from file
-    public Gallery read() throws IOException {
+    public void read() throws IOException {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
-        return parseGallery(jsonObject);
+        parseGallery(jsonObject);
     }
 
     // EFFECTS: reads source file as string and returns it
@@ -43,25 +43,23 @@ public class JsonReader {
     }
 
     // EFFECTS: parses JSON object to get and returns gallery
-    private Gallery parseGallery(JSONObject jsonObject) {
-        Gallery g = new Gallery();
-        addCanvases(g, jsonObject);
-        return g;
+    private void parseGallery(JSONObject jsonObject) {
+        addCanvases(jsonObject);
     }
 
     // MODIFIES: g
     // EFFECTS: parses JSON object to get and add canvases to gallery
-    private void addCanvases(Gallery g, JSONObject jsonObject) {
+    private void addCanvases(JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("canvases");
         for (Object json : jsonArray) {
             JSONObject nextCanvas = (JSONObject) json;
-            addCanvas(g, nextCanvas);
+            addCanvas(nextCanvas);
         }
     }
 
     // MODIFIES: g
     // EFFECTS: parses JSON object to get and add canvas to gallery
-    private void addCanvas(Gallery g, JSONObject jsonObject) {
+    private void addCanvas(JSONObject jsonObject) {
         int stylusXCoord = jsonObject.getInt("stylusXCoord");
         int stylusYCoord = jsonObject.getInt("stylusYCoord");
 
@@ -76,6 +74,6 @@ public class JsonReader {
             }
         }
         Canvas canvas = new Canvas(board, stylusXCoord, stylusYCoord);
-        g.addCanvas(canvas);
+        Gallery.getInstance().addCanvas(canvas);
     }
 }
