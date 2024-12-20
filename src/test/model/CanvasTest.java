@@ -177,6 +177,20 @@ public class CanvasTest {
     }
 
     @Test
+    void testDrawInvaildDirection() {
+        assertFalse(testCanvas.draw("apple", 2));
+
+        expectedArray = new boolean[][] {
+                { false, false, false },
+                { false, false, false }
+        };
+
+        assertArrayEquals(expectedArray, testCanvas.getBoard());
+        assertEquals(0, testCanvas.getStylusXCoord());
+        assertEquals(0, testCanvas.getStylusYCoord());
+    }
+
+    @Test
     void testDrawMultiple() {
         assertTrue(testCanvas.draw("right", 2));
         assertTrue(testCanvas.draw("down", 1));

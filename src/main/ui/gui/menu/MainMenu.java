@@ -1,6 +1,5 @@
 package ui.gui.menu;
 
-import model.Gallery;
 import model.Event;
 import model.EventLog;
 
@@ -169,7 +168,7 @@ public class MainMenu extends Menu {
             JsonWriter jsonWriter = new JsonWriter(JSON_STORE);
 
             jsonWriter.open();
-            jsonWriter.write(Gallery.getInstance());
+            jsonWriter.write(gallery);
             jsonWriter.close();
             JOptionPane.showMessageDialog(mainPanel, "Saved to " + JSON_STORE);
         } catch (FileNotFoundException e) {
@@ -182,7 +181,7 @@ public class MainMenu extends Menu {
     private void load() {
         try {
             JsonReader jsonReader = new JsonReader(JSON_STORE);
-            Gallery.getInstance().clear();;
+            gallery.clear();
             jsonReader.read();
             JOptionPane.showMessageDialog(mainPanel, "Loaded from " + JSON_STORE);
         } catch (IOException e) {

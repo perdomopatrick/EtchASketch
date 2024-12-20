@@ -18,6 +18,12 @@ public class GalleryTest {
     @Test
     void testConstructor() {
         assertEquals(0, testGallery.getCurrCanvasIndex());
+        try {
+            testGallery.getCanvas(0);
+            fail("Has canvas");
+        } catch (IndexOutOfBoundsException e) {
+            // pass
+        }
     }
 
     @Test
