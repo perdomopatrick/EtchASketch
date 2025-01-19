@@ -256,6 +256,8 @@ public class DrawMenu extends Menu {
         dialogKeyListener(action, dialog);
 
         dialog.setVisible(true);
+
+        createControlPanel();
     }
 
     // MODIFIES: this
