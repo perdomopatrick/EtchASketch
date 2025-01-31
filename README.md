@@ -32,9 +32,10 @@ The **digital** version is like the physical toy but better, because it has **ex
     1. In main menu, click 'View Canvas'
     2. Navigate to canvas you would like to export next Canvas and the previous Canvas buttons
     3. At the bottom, click 'Draw'
-- **How to find the visual component (game)**
+- **How to find country game**
     1. In main menu, click 'Visual Component'
-    2. You will see an image in the middle of the frame
+    2. You will see an image of a country's outline in the middle of the frame
+    3. Play the game: name the countries by their outline
     - Credit to: https://github.com/djaiss/mapsicon for the 512x512 images
 - **How to save your gallery**
     1. In main menu, click 'Save Gallery'
@@ -43,7 +44,7 @@ The **digital** version is like the physical toy but better, because it has **ex
 
 ## UML
 ![alt text](UML_Design_Diagram.png)
-Omitted:
+<br>Omitted:
 - dependency arrows
 - all classes not in main package
 - methods/fields/inner classes in your class/interface boxes
